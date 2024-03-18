@@ -14,9 +14,7 @@ def extract_ports_from_file(content):
 ip_input = input("Enter the IP address to scan: ")
 
 # Prompt the user to enter the name of the victim
-vic_name = input("What is the name of the victim? ");
-file_name = "-oA " + vic_name;
-
+file_name = input("What is the name of the victim? ");
 
 # Run nmap command to scan for open ports and write output to a text file
 with open("nmap_output.txt", "w") as output_file:
@@ -46,4 +44,4 @@ if not ports:
 print("Ports:", ports)
 
 # Run nmap with the discovered ports
-subprocess.run(["nmap", "-n", "-Pn","-p", ",".join(ports), "-sC", "-sV", ip_input, file_name])
+subprocess.run(["nmap", "-n", "-Pn","-p", ",".join(ports), "-sC", "-sV", ip_input, "-oA", file_name])
